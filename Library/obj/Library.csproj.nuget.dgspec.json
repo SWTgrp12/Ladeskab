@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\LadeskabTest\\LadeskabTest.csproj": {}
+    "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\Library\\Library.csproj": {}
   },
   "projects": {
-    "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\LadeskabTest\\LadeskabTest.csproj": {
+    "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\Library\\Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\LadeskabTest\\LadeskabTest.csproj",
-        "projectName": "LadeskabTest",
-        "projectPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\LadeskabTest\\LadeskabTest.csproj",
+        "projectUniqueName": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\Library\\Library.csproj",
+        "projectName": "Library",
+        "projectPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\Library\\Library.csproj",
         "packagesPath": "C:\\Users\\arsen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\LadeskabTest\\obj\\",
+        "outputPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\Library\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\arsen\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -37,24 +37,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "dependencies": {
-            "Microsoft.NET.Test.Sdk": {
-              "target": "Package",
-              "version": "[16.4.0, )"
-            },
-            "NUnit3TestAdapter": {
-              "target": "Package",
-              "version": "[3.15.1, )"
-            },
-            "NunitXml.TestLogger": {
-              "target": "Package",
-              "version": "[2.1.62, )"
-            },
-            "nunit": {
-              "target": "Package",
-              "version": "[3.12.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
