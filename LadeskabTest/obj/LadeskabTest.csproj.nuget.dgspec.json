@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\code\\SWT\\Ladeskab\\LadeskabTest\\LadeskabTest.csproj": {}
+    "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\LadeskabTest\\LadeskabTest.csproj": {}
   },
   "projects": {
-    "D:\\code\\SWT\\Ladeskab\\LadeskabTest\\LadeskabTest.csproj": {
+    "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\LadeskabTest\\LadeskabTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\code\\SWT\\Ladeskab\\LadeskabTest\\LadeskabTest.csproj",
+        "projectUniqueName": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\LadeskabTest\\LadeskabTest.csproj",
         "projectName": "LadeskabTest",
-        "projectPath": "D:\\code\\SWT\\Ladeskab\\LadeskabTest\\LadeskabTest.csproj",
-        "packagesPath": "C:\\Users\\Pav_w\\.nuget\\packages\\",
-        "outputPath": "D:\\code\\SWT\\Ladeskab\\LadeskabTest\\obj\\",
+        "projectPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\LadeskabTest\\LadeskabTest.csproj",
+        "packagesPath": "C:\\Users\\arsen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\LadeskabTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Pav_w\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\arsen\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +26,14 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\Ladeskab\\Ladeskab.csproj": {
+                "projectPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\Ladeskab\\Ladeskab.csproj"
+              },
+              "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\Library\\Library.csproj": {
+                "projectPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\Library\\Library.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -55,6 +62,110 @@
               "version": "[3.12.0, )"
             }
           },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\Ladeskab\\Ladeskab.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\Ladeskab\\Ladeskab.csproj",
+        "projectName": "Ladeskab",
+        "projectPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\Ladeskab\\Ladeskab.csproj",
+        "packagesPath": "C:\\Users\\arsen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\Ladeskab\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\arsen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\Library\\Library.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\Library\\Library.csproj",
+        "projectName": "Library",
+        "projectPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\Library\\Library.csproj",
+        "packagesPath": "C:\\Users\\arsen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\Library\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\arsen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
           "imports": [
             "net461",
             "net462",

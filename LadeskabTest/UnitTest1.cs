@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace LadeskabTest
+namespace Ladeskab.Test
 {
     public class Tests
     {

@@ -1,5 +1,9 @@
-﻿    class Program
-    {
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+class Program 
+{
         static void Main(string[] args)
         {
 				// Assemble your system here from all the classes
@@ -40,5 +44,5 @@
 
             } while (!finish);
         }
-    }
+    
 }

@@ -1231,6 +1231,26 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
+      },
+      "Ladeskab/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Ladeskab.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Ladeskab.dll": {}
+        }
+      },
+      "Library/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Library.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Library.dll": {}
+        }
       }
     }
   },
@@ -4639,10 +4659,22 @@
         "system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xmldocument.nuspec"
       ]
+    },
+    "Ladeskab/1.0.0": {
+      "type": "project",
+      "path": "../Ladeskab/Ladeskab.csproj",
+      "msbuildProject": "../Ladeskab/Ladeskab.csproj"
+    },
+    "Library/1.0.0": {
+      "type": "project",
+      "path": "../Library/Library.csproj",
+      "msbuildProject": "../Library/Library.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Ladeskab >= 1.0.0",
+      "Library >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 16.4.0",
       "NUnit3TestAdapter >= 3.15.1",
       "NunitXml.TestLogger >= 2.1.62",
@@ -4650,19 +4682,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Pav_w\\.nuget\\packages\\": {}
+    "C:\\Users\\arsen\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\code\\SWT\\Ladeskab\\LadeskabTest\\LadeskabTest.csproj",
+      "projectUniqueName": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\LadeskabTest\\LadeskabTest.csproj",
       "projectName": "LadeskabTest",
-      "projectPath": "D:\\code\\SWT\\Ladeskab\\LadeskabTest\\LadeskabTest.csproj",
-      "packagesPath": "C:\\Users\\Pav_w\\.nuget\\packages\\",
-      "outputPath": "D:\\code\\SWT\\Ladeskab\\LadeskabTest\\obj\\",
+      "projectPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\LadeskabTest\\LadeskabTest.csproj",
+      "packagesPath": "C:\\Users\\arsen\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\LadeskabTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Pav_w\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\arsen\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4674,7 +4706,14 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\Ladeskab\\Ladeskab.csproj": {
+              "projectPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\Ladeskab\\Ladeskab.csproj"
+            },
+            "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\Library\\Library.csproj": {
+              "projectPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\Library\\Library.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

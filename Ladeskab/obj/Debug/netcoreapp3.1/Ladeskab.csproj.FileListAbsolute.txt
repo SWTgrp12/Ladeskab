@@ -1,0 +1,4 @@
+C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab\Ladeskab\obj\Debug\netcoreapp3.1\Ladeskab.csprojAssemblyReference.cache
+C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab\Ladeskab\obj\Debug\netcoreapp3.1\Ladeskab.AssemblyInfoInputs.cache
+C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab\Ladeskab\obj\Debug\netcoreapp3.1\Ladeskab.AssemblyInfo.cs
+C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab\Ladeskab\obj\Debug\netcoreapp3.1\Ladeskab.csproj.CoreCompileInputs.cache

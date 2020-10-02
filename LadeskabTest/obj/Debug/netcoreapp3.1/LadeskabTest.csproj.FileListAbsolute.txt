@@ -90,3 +90,7 @@ C:\Users\rasmu\source\repos\Ladeskab\LadeskabTest\obj\Debug\netcoreapp3.1\Ladesk
 C:\Users\rasmu\source\repos\Ladeskab\LadeskabTest\obj\Debug\netcoreapp3.1\LadeskabTest.AssemblyInfo.cs
 C:\Users\rasmu\source\repos\Ladeskab\LadeskabTest\obj\Debug\netcoreapp3.1\LadeskabTest.csproj.CopyComplete
 C:\Users\rasmu\source\repos\Ladeskab\LadeskabTest\obj\Debug\netcoreapp3.1\LadeskabTest.genruntimeconfig.cache
+C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab\LadeskabTest\obj\Debug\netcoreapp3.1\LadeskabTest.csprojAssemblyReference.cache
+C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab\LadeskabTest\obj\Debug\netcoreapp3.1\LadeskabTest.AssemblyInfoInputs.cache
+C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab\LadeskabTest\obj\Debug\netcoreapp3.1\LadeskabTest.AssemblyInfo.cs
+C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab\LadeskabTest\obj\Debug\netcoreapp3.1\LadeskabTest.csproj.CoreCompileInputs.cache
