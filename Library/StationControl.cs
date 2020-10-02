@@ -8,6 +8,7 @@ using UsbSimulator;
 
 namespace Ladeskab
 {
+   
     public class StationControl
     {
         // Enum med tilstande ("states") svarende til tilstandsdiagrammet for klassen
