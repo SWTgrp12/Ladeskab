@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "O93UrPftJiPjvtE2NI2V3DCBBBPy0JBjfXqJF8naw/2hCjbXPr+M47cY499u7lDWH/y/oY4oKha/V9cy3Pv+dw==",
+  "dgSpecHash": "cFsNuWRJUALe/Khbvu+y+zDZ0x+K5Eh0OZmEI9JAS4CPMq+dZLiijnHnqBzg4ikTB5SRRWjj/WTb2C+ZQpIlfA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rasmu\\Documents\\E6\\SWT\\Ladeskab\\Library\\Library_bleh.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\rasmu\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\rasmu\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
-  ],
+  "projectFilePath": "D:\\code\\SWT\\Ladeskab\\Library\\Library.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

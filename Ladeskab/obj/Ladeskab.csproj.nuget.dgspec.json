@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rasmu\\Documents\\E6\\SWT\\Ladeskab\\Ladeskab\\Ladeskab.csproj": {}
+    "D:\\code\\SWT\\Ladeskab\\Ladeskab\\Ladeskab.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rasmu\\Documents\\E6\\SWT\\Ladeskab\\Ladeskab\\Ladeskab.csproj": {
+    "D:\\code\\SWT\\Ladeskab\\Ladeskab\\Ladeskab.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rasmu\\Documents\\E6\\SWT\\Ladeskab\\Ladeskab\\Ladeskab.csproj",
+        "projectUniqueName": "D:\\code\\SWT\\Ladeskab\\Ladeskab\\Ladeskab.csproj",
         "projectName": "Ladeskab",
-        "projectPath": "C:\\Users\\rasmu\\Documents\\E6\\SWT\\Ladeskab\\Ladeskab\\Ladeskab.csproj",
-        "packagesPath": "C:\\Users\\rasmu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rasmu\\Documents\\E6\\SWT\\Ladeskab\\Ladeskab\\obj\\",
+        "projectPath": "D:\\code\\SWT\\Ladeskab\\Ladeskab\\Ladeskab.csproj",
+        "packagesPath": "C:\\Users\\Pav_w\\.nuget\\packages\\",
+        "outputPath": "D:\\code\\SWT\\Ladeskab\\Ladeskab\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\rasmu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Pav_w\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

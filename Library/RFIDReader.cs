@@ -7,5 +7,8 @@ namespace afl2
     class RFIDReader
     {
         // Skal sende RfidDetected(id) events til StationControl
+
+
+
     }
 }
