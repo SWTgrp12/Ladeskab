@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\LadeskabTest\\LadeskabTest.csproj": {}
+    "D:\\code\\SWT\\Ladeskab\\LadeskabTest\\LadeskabTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\LadeskabTest\\LadeskabTest.csproj": {
+    "D:\\code\\SWT\\Ladeskab\\LadeskabTest\\LadeskabTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\LadeskabTest\\LadeskabTest.csproj",
+        "projectUniqueName": "D:\\code\\SWT\\Ladeskab\\LadeskabTest\\LadeskabTest.csproj",
         "projectName": "LadeskabTest",
-        "projectPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\LadeskabTest\\LadeskabTest.csproj",
-        "packagesPath": "C:\\Users\\arsen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab\\LadeskabTest\\obj\\",
+        "projectPath": "D:\\code\\SWT\\Ladeskab\\LadeskabTest\\LadeskabTest.csproj",
+        "packagesPath": "C:\\Users\\Pav_w\\.nuget\\packages\\",
+        "outputPath": "D:\\code\\SWT\\Ladeskab\\LadeskabTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\arsen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Pav_w\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
