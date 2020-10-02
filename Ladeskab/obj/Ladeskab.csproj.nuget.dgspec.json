@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rasmu\\source\\repos\\Ladeskab\\Ladeskab\\Ladeskab.csproj": {}
+    "C:\\Users\\rasmu\\Documents\\E6\\SWT\\Ladeskab\\Ladeskab\\Ladeskab.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rasmu\\source\\repos\\Ladeskab\\Ladeskab\\Ladeskab.csproj": {
+    "C:\\Users\\rasmu\\Documents\\E6\\SWT\\Ladeskab\\Ladeskab\\Ladeskab.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rasmu\\source\\repos\\Ladeskab\\Ladeskab\\Ladeskab.csproj",
+        "projectUniqueName": "C:\\Users\\rasmu\\Documents\\E6\\SWT\\Ladeskab\\Ladeskab\\Ladeskab.csproj",
         "projectName": "Ladeskab",
-        "projectPath": "C:\\Users\\rasmu\\source\\repos\\Ladeskab\\Ladeskab\\Ladeskab.csproj",
+        "projectPath": "C:\\Users\\rasmu\\Documents\\E6\\SWT\\Ladeskab\\Ladeskab\\Ladeskab.csproj",
         "packagesPath": "C:\\Users\\rasmu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rasmu\\source\\repos\\Ladeskab\\Ladeskab\\obj\\",
+        "outputPath": "C:\\Users\\rasmu\\Documents\\E6\\SWT\\Ladeskab\\Ladeskab\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rasmu\\AppData\\Roaming\\NuGet\\NuGet.Config",

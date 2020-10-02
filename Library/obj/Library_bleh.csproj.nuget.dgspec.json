@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rasmu\\source\\repos\\Ladeskab\\Library\\Library.csproj": {}
+    "C:\\Users\\rasmu\\Documents\\E6\\SWT\\Ladeskab\\Library\\Library_bleh.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rasmu\\source\\repos\\Ladeskab\\Library\\Library.csproj": {
+    "C:\\Users\\rasmu\\Documents\\E6\\SWT\\Ladeskab\\Library\\Library_bleh.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rasmu\\source\\repos\\Ladeskab\\Library\\Library.csproj",
-        "projectName": "Library",
-        "projectPath": "C:\\Users\\rasmu\\source\\repos\\Ladeskab\\Library\\Library.csproj",
+        "projectUniqueName": "C:\\Users\\rasmu\\Documents\\E6\\SWT\\Ladeskab\\Library\\Library_bleh.csproj",
+        "projectName": "Library_bleh",
+        "projectPath": "C:\\Users\\rasmu\\Documents\\E6\\SWT\\Ladeskab\\Library\\Library_bleh.csproj",
         "packagesPath": "C:\\Users\\rasmu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rasmu\\source\\repos\\Ladeskab\\Library\\obj\\",
+        "outputPath": "C:\\Users\\rasmu\\Documents\\E6\\SWT\\Ladeskab\\Library\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rasmu\\AppData\\Roaming\\NuGet\\NuGet.Config",
