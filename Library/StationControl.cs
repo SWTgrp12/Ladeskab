@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using afl2;
 using UsbSimulator;
 
 namespace Ladeskab
@@ -23,15 +24,24 @@ namespace Ladeskab
         // Her mangler flere member variable
         private LadeskabState _state;
         private IUsbCharger _charger;
+        private RFIDReader _rfidReader;
         private IDoor _door;
         private int _oldId;
 
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
         // Her mangler constructor
+        public StationControl()
+        {
+            // in the constructor we need to create an instance of the class triggering the event.
+            _rfidReader =  new RFIDReader();
+            // and associate its event handler with the function that handles it.
+            _rfidReader.RfidHandler += new EventHandler<RfidEventArgs>(RfidDetected);
+        }
 
         // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
-        private void RfidDetected(int id)
+        // object sender burde i teorien betyde at den her 
+        private void RfidDetected(object sender, RfidEventArgs e)
 
         {
             switch (_state)
@@ -42,10 +52,10 @@ namespace Ladeskab
                     {
                         _door.Lock();
                         _charger.StartCharge();
-                        _oldId = id;
+                        _oldId = e.id_;
                         using (var writer = File.AppendText(logFile))
                         {
-                            writer.WriteLine(DateTime.Now + ": Skab låst med RFID: {0}", id);
+                            writer.WriteLine(DateTime.Now + ": Skab låst med RFID: {0}", e.id_);
                         }
 
                         Console.WriteLine("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");
@@ -64,13 +74,13 @@ namespace Ladeskab
 
                 case LadeskabState.Locked:
                     // Check for correct ID
-                    if (id == _oldId)
+                    if (e.id_ == _oldId)
                     {
                         _charger.StopCharge();
                         _door.Unlock();
                         using (var writer = File.AppendText(logFile))
                         {
-                            writer.WriteLine(DateTime.Now + ": Skab låst op med RFID: {0}", id);
+                            writer.WriteLine(DateTime.Now + ": Skab låst op med RFID: {0}", e.id_);
                         }
 
                         Console.WriteLine("Tag din telefon ud af skabet og luk døren");
@@ -81,6 +91,9 @@ namespace Ladeskab
                         Console.WriteLine("Forkert RFID tag");
                     }
 
+                    break;
+                default:
+                    // shouldn't happen but might as well be safe.
                     break;
             }
         }
