@@ -1,4 +1,6 @@
+using Library;
 using NUnit.Framework;
+using UsbSimulator;
 
 namespace Ladeskab.Test
 {
@@ -7,6 +9,7 @@ namespace Ladeskab.Test
         [SetUp]
         public void Setup()
         {
+            var n = new ChargeControl(new UsbChargerSimulator());
         }
 
         [Test]

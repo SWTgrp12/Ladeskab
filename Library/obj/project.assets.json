@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\Pav_w\\.nuget\\packages\\": {}
+    "C:\\Users\\arsen\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\code\\SWT\\Ladeskab\\Ladeskab\\Library\\Library.csproj",
+      "projectUniqueName": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab-version2\\Ladskab\\Library\\Library.csproj",
       "projectName": "Library",
-      "projectPath": "D:\\code\\SWT\\Ladeskab\\Ladeskab\\Library\\Library.csproj",
-      "packagesPath": "C:\\Users\\Pav_w\\.nuget\\packages\\",
-      "outputPath": "D:\\code\\SWT\\Ladeskab\\Ladeskab\\Library\\obj\\",
+      "projectPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab-version2\\Ladskab\\Library\\Library.csproj",
+      "packagesPath": "C:\\Users\\arsen\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab-version2\\Ladskab\\Library\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Pav_w\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\arsen\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
