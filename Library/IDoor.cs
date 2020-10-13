@@ -6,6 +6,8 @@ namespace Library
 {
     interface IDoor
     {
+        event EventHandler CloseHandler;
+        event EventHandler OpenHandler;
         void Open();
         void Close();
         void Lock();

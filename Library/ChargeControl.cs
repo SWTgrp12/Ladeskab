@@ -28,27 +28,12 @@ namespace Library
 
         public bool connection_establishment()
         {
-            if (_usbChargerSimulator.Connected == true)
-            {
-                return true;
-                // device connected
-            }
-
-            else if (_usbChargerSimulator.Connected == false)
-            {
-                return false;
-                // device not connected
-            }
-
-            else
-            {
-                // do nothing
-            }
+            return _usbChargerSimulator.Connected;
         }
 
         public void handle_charge()
         {
-            // currently you dispaly messages here, but im thinknig returning enums to station control that can then decide what to display
+            // currently you display messages here, but im thinking returning enums to station control that can then decide what to display
             if (current_stat == 0)
             {
                 // not connected

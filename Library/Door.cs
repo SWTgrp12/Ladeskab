@@ -4,10 +4,13 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace Door
+namespace Library
 {
     public class Door :IDoor
     {
+        public event EventHandler CloseHandler;
+        public event EventHandler OpenHandler;
+
         // Door Has 3 different state
         private enum DoorState
         {
@@ -18,8 +21,8 @@ namespace Door
 
         private DoorState _state;
 
-        // Constructor
 
+        // Constructor
         public Door()
         {
             _state = DoorState.Closed;
@@ -31,6 +34,8 @@ namespace Door
             if (_state == DoorState.Closed)
             {
                 _state = DoorState.Open;
+                // invoking an event to send the information to StationControl
+                OpenHandler?.Invoke(this, EventArgs.Empty);
                 Console.WriteLine("Door Is now Open");
             }
             else
@@ -45,6 +50,7 @@ namespace Door
             if (_state == DoorState.Open)
             {
                 _state = DoorState.Closed;
+                CloseHandler?.Invoke(this, EventArgs.Empty);
                 Console.WriteLine("Door Is now Closed");
             }
             else
@@ -77,7 +83,7 @@ namespace Door
             if (_state == DoorState.Locked)
             {
                 _state = DoorState.Closed;
-                Console.WriteLine("Door Is now Unlock");
+                Console.WriteLine("Door Is now Unlocked");
             }
             else
             {
@@ -86,3 +92,4 @@ namespace Door
         }
     }
 }
+

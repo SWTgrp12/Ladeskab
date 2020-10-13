@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using afl2;
 using UsbSimulator;
+//using Door = Door.Door;
 
 namespace Ladeskab
 {
@@ -27,7 +28,7 @@ namespace Ladeskab
         private RFIDReader _rfidReader;
         private IDoor _door;
         private int _oldId;
-
+        private Display _display;
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
         // Her mangler constructor
@@ -37,6 +38,21 @@ namespace Ladeskab
             _rfidReader =  new RFIDReader();
             // and associate its event handler with the function that handles it.
             _rfidReader.RfidHandler += new EventHandler<RfidEventArgs>(RfidDetected);
+
+            // Door and its events
+            _door =  new Door();
+            _door.OpenHandler += new EventHandler(DoorOpened);
+            _door.CloseHandler += new EventHandler(DoorClosed);
+
+        }
+        // event handlers for Door. Displays the appropriate message when the door is opened and closed
+        private void DoorOpened(object sender, EventArgs e)
+        {
+            _display.print("Tilslut telefon");
+        }
+        private void DoorClosed(object sender, EventArgs e)
+        {
+            _display.print("Indlæs RFID");
         }
 
         // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
@@ -57,13 +73,12 @@ namespace Ladeskab
                         {
                             writer.WriteLine(DateTime.Now + ": Skab låst med RFID: {0}", e.id_);
                         }
-
-                        Console.WriteLine("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");
+                        _display.print("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");
                         _state = LadeskabState.Locked;
                     }
                     else
                     {
-                        Console.WriteLine("Din telefon er ikke ordentlig tilsluttet. Prøv igen.");
+                        _display.print("Din telefon er ikke ordentlig tilsluttet. Prøv igen.");
                     }
 
                     break;
@@ -83,12 +98,12 @@ namespace Ladeskab
                             writer.WriteLine(DateTime.Now + ": Skab låst op med RFID: {0}", e.id_);
                         }
 
-                        Console.WriteLine("Tag din telefon ud af skabet og luk døren");
+                        _display.print("Tag din telefon ud af skabet og luk døren");
                         _state = LadeskabState.Available;
                     }
                     else
                     {
-                        Console.WriteLine("Forkert RFID tag");
+                        _display.print("Forkert RFID tag");
                     }
 
                     break;
@@ -97,7 +112,5 @@ namespace Ladeskab
                     break;
             }
         }
-
-        // Her mangler de andre trigger handlere
     }
 }
