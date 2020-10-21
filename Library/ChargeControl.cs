@@ -6,7 +6,14 @@ using UsbSimulator;
 namespace Library
 {
 
-    
+    public enum Charge_Status
+    {
+        NOT_CONNECTED,
+        CHARGING_FINISHED,
+        CHARGING_IN_PROGRESS,
+        CHARGING_FAILURE,
+        NON_VALID,
+    }
 
     public class ChargeControl
     {
@@ -31,32 +38,37 @@ namespace Library
             return _usbChargerSimulator.Connected;
         }
 
-        public void handle_charge()
+        public Charge_Status handle_charge()
         {
             // currently you display messages here, but im thinking returning enums to station control that can then decide what to display
             if (current_stat == 0)
             {
+                return Charge_Status.NOT_CONNECTED;
                 // not connected
             }
 
             else if (((current_stat > 0) && (current_stat <= 5)))
             {
-                // charging finished
+                return Charge_Status.CHARGING_FINISHED;
+            // charging finished
 
             }
 
             else if (((current_stat > 5) && (current_stat <= 500)))
             {
+                return Charge_Status.CHARGING_IN_PROGRESS;
                 // charging in progress
             }
 
             else if (current_stat > 500)
             {
+                return Charge_Status.CHARGING_FAILURE;
                 // charging failure
             }
 
             else
             {
+                return Charge_Status.NON_VALID;
                 // do nothing
             }
         }
