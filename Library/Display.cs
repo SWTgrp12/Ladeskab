@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Display
 {
-    class DisplayControl : IDisplay
+    public class DisplayControl : IDisplay
     {
         // Variables
         public string DisplayAreaStation { get; private set; } = "";

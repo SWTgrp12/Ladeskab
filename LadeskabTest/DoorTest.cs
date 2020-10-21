@@ -5,7 +5,7 @@ using Library;
 using NUnit.Framework;
 using NSubstitute;
 
-namespace Ladeskab.Test
+namespace LadeskabTest
 {
     class DoorTest
     {
