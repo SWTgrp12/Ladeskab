@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Library
 {
-    interface IDoor
+    public interface IDoor
     {
         event EventHandler CloseHandler;
         event EventHandler OpenHandler;
@@ -12,7 +12,7 @@ namespace Library
         void Close();
         void Lock();
         void Unlock();
-
+        public Door.DoorState GetDoorState();
 
     }
 }
