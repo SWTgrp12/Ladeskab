@@ -6,3 +6,12 @@ C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab-version2\Ladskab\Lades
 C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab-version2\Ladskab\Ladeskab\obj\Debug\netcoreapp3.1\Ladeskab.AssemblyInfoInputs.cache
 C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab-version2\Ladskab\Ladeskab\obj\Debug\netcoreapp3.1\Ladeskab.AssemblyInfo.cs
 C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab-version2\Ladskab\Ladeskab\obj\Debug\netcoreapp3.1\Ladeskab.csproj.CoreCompileInputs.cache
+C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab-version2\Ladskab\Ladeskab\bin\Debug\netcoreapp3.1\Ladeskab.exe
+C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab-version2\Ladskab\Ladeskab\bin\Debug\netcoreapp3.1\Ladeskab.deps.json
+C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab-version2\Ladskab\Ladeskab\bin\Debug\netcoreapp3.1\Ladeskab.runtimeconfig.json
+C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab-version2\Ladskab\Ladeskab\bin\Debug\netcoreapp3.1\Ladeskab.runtimeconfig.dev.json
+C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab-version2\Ladskab\Ladeskab\bin\Debug\netcoreapp3.1\Ladeskab.dll
+C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab-version2\Ladskab\Ladeskab\bin\Debug\netcoreapp3.1\Ladeskab.pdb
+C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab-version2\Ladskab\Ladeskab\obj\Debug\netcoreapp3.1\Ladeskab.dll
+C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab-version2\Ladskab\Ladeskab\obj\Debug\netcoreapp3.1\Ladeskab.pdb
+C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab-version2\Ladskab\Ladeskab\obj\Debug\netcoreapp3.1\Ladeskab.genruntimeconfig.cache

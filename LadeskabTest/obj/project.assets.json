@@ -4856,19 +4856,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Pav_w\\.nuget\\packages\\": {}
+    "C:\\Users\\arsen\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\code\\SWT\\Ladeskab\\LadeskabTest\\LadeskabTest.csproj",
+      "projectUniqueName": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab-version2\\Ladskab\\LadeskabTest\\LadeskabTest.csproj",
       "projectName": "LadeskabTest",
-      "projectPath": "D:\\code\\SWT\\Ladeskab\\LadeskabTest\\LadeskabTest.csproj",
-      "packagesPath": "C:\\Users\\Pav_w\\.nuget\\packages\\",
-      "outputPath": "D:\\code\\SWT\\Ladeskab\\LadeskabTest\\obj\\",
+      "projectPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab-version2\\Ladskab\\LadeskabTest\\LadeskabTest.csproj",
+      "packagesPath": "C:\\Users\\arsen\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab-version2\\Ladskab\\LadeskabTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Pav_w\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\arsen\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4881,11 +4881,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\code\\SWT\\Ladeskab\\Ladeskab\\Ladeskab.csproj": {
-              "projectPath": "D:\\code\\SWT\\Ladeskab\\Ladeskab\\Ladeskab.csproj"
+            "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab-version2\\Ladskab\\Ladeskab\\Ladeskab.csproj": {
+              "projectPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab-version2\\Ladskab\\Ladeskab\\Ladeskab.csproj"
             },
-            "D:\\code\\SWT\\Ladeskab\\Library\\Library.csproj": {
-              "projectPath": "D:\\code\\SWT\\Ladeskab\\Library\\Library.csproj"
+            "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab-version2\\Ladskab\\Library\\Library.csproj": {
+              "projectPath": "C:\\Users\\arsen\\Desktop\\courses\\SWT\\week 5-handin-Ladeskab-version2\\Ladskab\\Library\\Library.csproj"
             }
           }
         }

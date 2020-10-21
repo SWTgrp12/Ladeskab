@@ -6,14 +6,16 @@ using UsbSimulator;
 namespace Library
 {
 
+    
     public enum Charge_Status
     {
-        NOT_CONNECTED,
-        CHARGING_FINISHED,
-        CHARGING_IN_PROGRESS,
-        CHARGING_FAILURE,
-        NON_VALID,
+        NOT_CONNECTED=1,
+        CHARGING_FINISHED=2,
+        CHARGING_IN_PROGRESS=3,
+        CHARGING_FAILURE=4,
+        NON_VALID=5,
     }
+    
 
     public class ChargeControl
     {
@@ -30,7 +32,6 @@ namespace Library
         private void UsbDevice_CurrentValueEvent(object sender, CurrentEventArgs e) //call this function on event
         {
             current_stat = e.Current;
-            handle_charge();
         }
 
         public bool connection_establishment()
@@ -44,31 +45,36 @@ namespace Library
             if (current_stat == 0)
             {
                 return Charge_Status.NOT_CONNECTED;
+                //return 1;
                 // not connected
             }
-
+           
             else if (((current_stat > 0) && (current_stat <= 5)))
             {
                 return Charge_Status.CHARGING_FINISHED;
-            // charging finished
+                //return 2;
+                //charging finished
 
             }
 
             else if (((current_stat > 5) && (current_stat <= 500)))
             {
                 return Charge_Status.CHARGING_IN_PROGRESS;
+                //return 3;
                 // charging in progress
             }
 
             else if (current_stat > 500)
             {
                 return Charge_Status.CHARGING_FAILURE;
+                //return 4;
                 // charging failure
             }
-
+           
             else
             {
                 return Charge_Status.NON_VALID;
+                //return 5;
                 // do nothing
             }
         }
