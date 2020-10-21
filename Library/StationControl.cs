@@ -40,6 +40,9 @@ namespace Ladeskab
             // and associate its event handler with the function that handles it.
             _rfidReader.RfidHandler += new EventHandler<RfidEventArgs>(RfidDetected);
 
+            //Display 
+            _display = new DisplayControl();
+
             // Door and its events
             _door =  new Door();
             _door.OpenHandler += new EventHandler(DoorOpened);
@@ -49,11 +52,11 @@ namespace Ladeskab
         // event handlers for Door. Displays the appropriate message when the door is opened and closed
         private void DoorOpened(object sender, EventArgs e)
         {
-            _display.print("Tilslut telefon");
+            _display.PrintStationMsg("Tilslut telefon");
         }
         private void DoorClosed(object sender, EventArgs e)
         {
-            _display.print("Indlæs RFID");
+            _display.PrintStationMsg("Indlæs RFID");
         }
 
         // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
@@ -74,12 +77,12 @@ namespace Ladeskab
                         {
                             writer.WriteLine(DateTime.Now + ": Skab låst med RFID: {0}", e.id_);
                         }
-                        _display.print("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");
+                        _display.PrintStationMsg("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");
                         _state = LadeskabState.Locked;
                     }
                     else
                     {
-                        _display.print("Din telefon er ikke ordentlig tilsluttet. Prøv igen.");
+                        _display.PrintStationMsg("Din telefon er ikke ordentlig tilsluttet. Prøv igen.");
                     }
 
                     break;
@@ -99,12 +102,12 @@ namespace Ladeskab
                             writer.WriteLine(DateTime.Now + ": Skab låst op med RFID: {0}", e.id_);
                         }
 
-                        _display.print("Tag din telefon ud af skabet og luk døren");
+                        _display.PrintStationMsg("Tag din telefon ud af skabet og luk døren");
                         _state = LadeskabState.Available;
                     }
                     else
                     {
-                        _display.print("Forkert RFID tag");
+                        _display.PrintStationMsg("Forkert RFID tag");
                     }
 
                     break;

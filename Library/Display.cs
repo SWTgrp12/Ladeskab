@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using Ladeskab;
+﻿using Ladeskab;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -26,13 +22,13 @@ namespace Display
             Console.WriteLine("Display Constructor times called: " + _constructerCounter);
         }
 
-        private void PrintStationMsg(string Msg)
+        public void PrintStationMsg(string Msg)
         {
             DisplayAreaStation = Msg;
             Update();
         }
 
-        private void PrintChargerMsg(string Msg)
+        public void PrintChargerMsg(string Msg)
         {
             DisplayAreaCharger = Msg;
             Update();

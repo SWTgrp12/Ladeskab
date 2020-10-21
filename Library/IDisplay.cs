@@ -11,6 +11,9 @@ namespace Display
         string DisplayAreaCharger { get; }
         //bool ClearConsoleWhenUpdating { get; set; }
 
+        void PrintStationMsg(string Msg);
+        void PrintChargerMsg(string Msg);
+
         void Update();  // writes the current display's again
 
 
