@@ -12,7 +12,7 @@ namespace Library
         public event EventHandler OpenHandler;
 
         // Door Has 3 different state
-        private enum DoorState
+        public enum DoorState
         {
             Locked,
             Closed,
@@ -21,7 +21,10 @@ namespace Library
 
         private DoorState _state;
 
-
+        public DoorState GetDoorState()
+        {
+            return _state;
+        }
         // Constructor
         public Door()
         {
@@ -64,7 +67,6 @@ namespace Library
         public void Lock()
         {
             Console.WriteLine("Locking Door");
-            // must send doorclosed event to StationControl
             if (_state == DoorState.Closed)
             {
                 _state = DoorState.Locked;
