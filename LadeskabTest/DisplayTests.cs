@@ -1,21 +1,27 @@
 ﻿using Library;
 using NUnit.Framework;
 using UsbSimulator;
+using Display;
 
 namespace Ladeskab.Test
 {
     public class DisplayTestClass
     {
+        private IDisplay _uut;
+
         [SetUp]
         public void Setup()
         {
-            var n = new ChargeControl(new UsbChargerSimulator());
+            _uut = new DisplayControl();
         }
 
         [Test]
-        public void Test1()
+        public void PrintStationMsg()
         {
-            Assert.Pass();
+            _uut.PrintStationMsg("Test");
+            Assert.That(_uut.DisplayAreaStation, Is.EqualTo());
+
+
         }
     }
 }

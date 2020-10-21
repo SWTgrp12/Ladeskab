@@ -7,3 +7,12 @@ C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab\Library\obj\Debug\netc
 C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab\Library\obj\Debug\netcoreapp3.1\Library.csproj.CoreCompileInputs.cache
 C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab\Library\obj\Debug\netcoreapp3.1\Library.dll
 C:\Users\arsen\Desktop\courses\SWT\week 5-handin-Ladeskab\Library\obj\Debug\netcoreapp3.1\Library.pdb
+D:\code\SWT\Ladeskab\Library\bin\Debug\netcoreapp3.1\Library.deps.json
+D:\code\SWT\Ladeskab\Library\bin\Debug\netcoreapp3.1\Library.dll
+D:\code\SWT\Ladeskab\Library\bin\Debug\netcoreapp3.1\Library.pdb
+D:\code\SWT\Ladeskab\Library\obj\Debug\netcoreapp3.1\Library.csprojAssemblyReference.cache
+D:\code\SWT\Ladeskab\Library\obj\Debug\netcoreapp3.1\Library.AssemblyInfoInputs.cache
+D:\code\SWT\Ladeskab\Library\obj\Debug\netcoreapp3.1\Library.AssemblyInfo.cs
+D:\code\SWT\Ladeskab\Library\obj\Debug\netcoreapp3.1\Library.csproj.CoreCompileInputs.cache
+D:\code\SWT\Ladeskab\Library\obj\Debug\netcoreapp3.1\Library.dll
+D:\code\SWT\Ladeskab\Library\obj\Debug\netcoreapp3.1\Library.pdb
