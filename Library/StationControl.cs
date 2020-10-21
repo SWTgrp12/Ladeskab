@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using afl2;
 using UsbSimulator;
+using Display;
 //using Door = Door.Door;
 
 namespace Ladeskab
@@ -28,7 +29,7 @@ namespace Ladeskab
         private RFIDReader _rfidReader;
         private IDoor _door;
         private int _oldId;
-        private Display _display;
+        private IDisplay _display;
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
         // Her mangler constructor
