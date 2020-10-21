@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using afl2;
 using UsbSimulator;
 using Display;
 //using Door = Door.Door;

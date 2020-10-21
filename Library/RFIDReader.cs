@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace afl2
+namespace Library
 {
-    class RFIDReader
+    public class RFIDReader : IRFIDReader
     {
         public event EventHandler<RfidEventArgs> RfidHandler;
         /// raises the event with an event argument containing the id.
-        protected void RfidEvent(int id)
+        public void RfidEvent(int id)
         {
             // creates event arguments containing the id
             RfidEventArgs eventboy = new RfidEventArgs(id);

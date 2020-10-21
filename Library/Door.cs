@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Library
 {
-    public class Door :IDoor
+    public class Door : IDoor
     {
         public event EventHandler CloseHandler;
         public event EventHandler OpenHandler;
