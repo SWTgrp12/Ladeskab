@@ -24,8 +24,10 @@ namespace Ladeskab
 
         // Her mangler flere member variable
         private LadeskabState _state;
-        private IUsbCharger _charger;
+      //  private IUsbCharger _charger;
         private RFIDReader _rfidReader;
+        private ChargeControl _chargeControl;
+        private UsbChargerSimulator _usbCharger;
         private IDoor _door;
         private int _oldId;
         private IDisplay _display;
@@ -38,6 +40,11 @@ namespace Ladeskab
             _rfidReader =  new RFIDReader();
             // and associate its event handler with the function that handles it.
             _rfidReader.RfidHandler += new EventHandler<RfidEventArgs>(RfidDetected);
+
+            // usbsimulator
+            _usbCharger = new UsbChargerSimulator();
+            // Charge Control
+            _chargeControl = new ChargeControl(_usbCharger);
 
             //Display 
             _display = new DisplayControl();
@@ -67,10 +74,10 @@ namespace Ladeskab
             {
                 case LadeskabState.Available:
                     // Check for ladeforbindelse
-                    if (_charger.Connected)
+                    if (_chargeControl.connection_establishment())
                     {
                         _door.Lock();
-                        _charger.StartCharge();
+                        _chargeControl.charge_control_start();
                         _oldId = e.id_;
                         using (var writer = File.AppendText(logFile))
                         {
@@ -94,7 +101,7 @@ namespace Ladeskab
                     // Check for correct ID
                     if (e.id_ == _oldId)
                     {
-                        _charger.StopCharge();
+                        _chargeControl.charge_control_stop();
                         _door.Unlock();
                         using (var writer = File.AppendText(logFile))
                         {
