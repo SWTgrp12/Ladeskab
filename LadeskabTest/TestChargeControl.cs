@@ -1,3 +1,4 @@
+using Display;
 using Library;
 using NUnit.Framework;
 using UsbSimulator;
@@ -8,6 +9,7 @@ namespace Ladeskab.Test
     public class Tests
     {
         private IUsbCharger _usbCharger;
+        private IDisplay _display;
         private ChargeControl _uut;
         Charge_Status stat;
 
@@ -16,7 +18,8 @@ namespace Ladeskab.Test
         {
             
             _usbCharger = Substitute.For<IUsbCharger>();
-            _uut = new ChargeControl(_usbCharger);
+            _display = Substitute.For<IDisplay>();
+            _uut = new ChargeControl(_usbCharger,_display);
         }
 
         [TestCase(false,false)]

@@ -44,7 +44,7 @@ namespace Ladeskab
             // usbsimulator
             _usbCharger = new UsbChargerSimulator();
             // Charge Control
-            _chargeControl = new ChargeControl(_usbCharger);
+            _chargeControl = new ChargeControl(_usbCharger, _display);
 
             //Display 
             _display = new DisplayControl();

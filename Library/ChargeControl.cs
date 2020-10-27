@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Display;
 using UsbSimulator;
 
 namespace Library
@@ -20,10 +21,12 @@ namespace Library
     public class ChargeControl: IChargeControl
     {
         private readonly IUsbCharger _usbChargerSimulator;
+        private IDisplay _display;
         public double current_stat { get; set;}
 
-        public ChargeControl(IUsbCharger usbDevice) 
-        { 
+        public ChargeControl(IUsbCharger usbDevice, IDisplay display)
+        {
+            _display = display;
             _usbChargerSimulator = usbDevice;
             _usbChargerSimulator.CurrentValueEvent += UsbDevice_CurrentValueEvent;
         }
@@ -44,6 +47,8 @@ namespace Library
             // currently you display messages here, but im thinking returning enums to station control that can then decide what to display
             if (current_stat == 0)
             {
+                string Msg = "Charger is not connected";
+                _display.PrintChargerMsg(Msg);
                 return Charge_Status.NOT_CONNECTED;
                 //return 1;
                 // not connected
@@ -51,6 +56,8 @@ namespace Library
            
             else if (((current_stat > 0) && (current_stat <= 5)))
             {
+                string Msg = "Charging has finished";
+                _display.PrintChargerMsg(Msg);
                 return Charge_Status.CHARGING_FINISHED;
                 //return 2;
                 //charging finished
@@ -59,6 +66,8 @@ namespace Library
 
             else if (((current_stat > 5) && (current_stat <= 500)))
             {
+                string Msg = "Charging is currently in progress";
+                _display.PrintChargerMsg(Msg);
                 return Charge_Status.CHARGING_IN_PROGRESS;
                 //return 3;
                 // charging in progress
@@ -66,6 +75,8 @@ namespace Library
 
             else if (current_stat > 500)
             {
+                string Msg = "Charging failure! Please Disconnect your Device";
+                _display.PrintChargerMsg(Msg);
                 return Charge_Status.CHARGING_FAILURE;
                 //return 4;
                 // charging failure

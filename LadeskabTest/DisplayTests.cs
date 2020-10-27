@@ -14,7 +14,7 @@ namespace Ladeskab.Test
         {
             _uut = new DisplayControl();
         }
-
+        /*
         [Test]
         public void PrintStationMsg()
         {
@@ -23,5 +23,6 @@ namespace Ladeskab.Test
 
 
         }
+        */
     }
 }
