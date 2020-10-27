@@ -13,16 +13,22 @@ namespace LadeskabTest
         {
             _uut = new DisplayControl();
         }
-        /*
+
         [Test]
         public void PrintStationMsg()
         {
             TestMsg = "Test";
             _uut.PrintStationMsg(TestMsg);
             Assert.That(_uut.DisplayAreaStation, Is.EqualTo(TestMsg));
-
-
         }
-        */
+        [Test]
+        public void PrintChargerMsg()
+        {
+            TestMsg = "Test";
+            _uut.PrintChargerMsg(TestMsg);
+            Assert.That(_uut.DisplayAreaCharger, Is.EqualTo(TestMsg));
+        }
+
+
     }
 }
