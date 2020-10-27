@@ -17,7 +17,7 @@ namespace Library
     }
     
 
-    public class ChargeControl
+    public class ChargeControl: IChargeControl
     {
         private readonly IUsbCharger _usbChargerSimulator;
         public double current_stat { get; set;}
