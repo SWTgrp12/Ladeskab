@@ -5,13 +5,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UsbSimulator;
-using Display;
 //using Door = Door.Door;
 
-namespace Ladeskab
+namespace Library
 {
-   
+
     public class StationControl
     {
         // Enum med tilstande ("states") svarende til tilstandsdiagrammet for klassen

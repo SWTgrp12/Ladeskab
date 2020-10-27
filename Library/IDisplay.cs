@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 
-namespace Display
+namespace Library
 {
     public interface IDisplay
     {

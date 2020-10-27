@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection.Metadata;
 using System.Text;
-using Display;
-using Ladeskab;
 using Library;
-using UsbSimulator;
 using NUnit.Framework;
 using NSubstitute;
 

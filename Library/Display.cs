@@ -1,9 +1,8 @@
-﻿using Ladeskab;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Display
+namespace Library
 {
     public class DisplayControl : IDisplay
     {

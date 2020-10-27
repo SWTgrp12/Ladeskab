@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Display;
-using UsbSimulator;
 
 namespace Library
 {

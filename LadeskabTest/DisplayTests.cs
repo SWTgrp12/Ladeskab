@@ -1,7 +1,5 @@
-﻿using Library;
-using NUnit.Framework;
-using UsbSimulator;
-using Display;
+﻿using NUnit.Framework;
+using Library;
 
 namespace LadeskabTest
 {

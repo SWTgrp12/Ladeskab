@@ -1,7 +1,5 @@
-using Display;
 using Library;
 using NUnit.Framework;
-using UsbSimulator;
 using NSubstitute;
 
 namespace LadeskabTest
