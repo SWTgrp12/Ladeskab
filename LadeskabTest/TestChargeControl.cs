@@ -57,6 +57,5 @@ namespace Ladeskab.Test
             Assert.That(_uut.handle_charge(), Is.EqualTo(CS_t));
         }
 
-       
     }
 }

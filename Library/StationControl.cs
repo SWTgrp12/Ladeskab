@@ -47,7 +47,7 @@ namespace Ladeskab
             //Display 
             _display = new DisplayControl();
             // Charge Control
-            _chargeControl = new ChargeControl(_usbCharger, ref _display);
+            _chargeControl = new ChargeControl(_usbCharger, _display);
 
             // Door and its events
             _door =  new Door();
