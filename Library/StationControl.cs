@@ -33,7 +33,7 @@ namespace Ladeskab
         private IDisplay _display;
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
-        // Her mangler constructor
+        // Normal constructor
         public StationControl()
         {
             // in the constructor we need to create an instance of the class triggering the event.
@@ -43,17 +43,38 @@ namespace Ladeskab
 
             // usbsimulator
             _usbCharger = new UsbChargerSimulator();
-            // Charge Control
-            _chargeControl = new ChargeControl(_usbCharger);
 
             //Display 
             _display = new DisplayControl();
+            // Charge Control
+            _chargeControl = new ChargeControl(_usbCharger, ref _display);
 
             // Door and its events
             _door =  new Door();
             _door.OpenHandler += new EventHandler(DoorOpened);
             _door.CloseHandler += new EventHandler(DoorClosed);
 
+        }
+        // Test constructor, which we can easily give substitutes
+        public StationControl(RFIDReader rfidReader, UsbChargerSimulator usb, Door door)
+        {
+            // in the constructor we need to create an instance of the class triggering the event.
+            _rfidReader = rfidReader;
+            // and associate its event handler with the function that handles it.
+            _rfidReader.RfidHandler += new EventHandler<RfidEventArgs>(RfidDetected);
+
+            // usbsimulator
+            _usbCharger = usb;
+
+            //Display 
+            _display = new DisplayControl();
+            // Charge Control
+            _chargeControl = new ChargeControl(_usbCharger, ref _display);
+
+            // Door and its events
+            _door = door;
+            _door.OpenHandler += new EventHandler(DoorOpened);
+            _door.CloseHandler += new EventHandler(DoorClosed);
         }
         // event handlers for Door. Displays the appropriate message when the door is opened and closed
         private void DoorOpened(object sender, EventArgs e)
