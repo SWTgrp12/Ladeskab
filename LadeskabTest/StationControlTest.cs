@@ -31,6 +31,29 @@ namespace LadeskabTest
             station = new StationControl(rfidreader, door, disp, chargeControl);
         }
 
+        [TestCase(30)]
+        [TestCase(900)]
+        public void TestSetOldId(int id)
+        {
+            // set old_id
+            station.State = StationControl.LadeskabState.Available;
+            chargeControl.connection_establishment().Returns(true); // ENSURE CONNECTION ESTABLISHMENT
+            rfidreader.RfidHandler += Raise.EventWith(new RfidEventArgs(id));
+            Assert.AreEqual(id, station._oldId);
+        }
+        [Test]
+        public void TestDoorOpened()
+        {
+            door.OpenHandler += Raise.Event();
+            Assert.AreEqual(StationControl.LadeskabState.DoorOpen, station.State);
+        }
+        [Test]
+        public void TestDoorClosed()
+        {
+            door.CloseHandler += Raise.Event();
+            Assert.AreEqual(StationControl.LadeskabState.Available, station.State);
+
+        }
         [TestCase(1)]
         [TestCase(9)]
         public void TestRfidAvailable(int id)
@@ -39,7 +62,6 @@ namespace LadeskabTest
             chargeControl.connection_establishment().Returns(true); // ENSURE CONNECTION ESTABLISHMENT
             rfidreader.RfidHandler += Raise.EventWith(new RfidEventArgs(id));
 
-            Assert.AreEqual(id, station.GetOldId());
             Assert.AreEqual(StationControl.LadeskabState.Locked, station.State);
         }
         [TestCase(1)]
@@ -60,32 +82,29 @@ namespace LadeskabTest
         public void TestRfidLocked(int OldId, int id)
         {
             // set old_id
-            station.SetOldId(OldId);
+            station.State = StationControl.LadeskabState.Available;
+            chargeControl.connection_establishment().Returns(true); // ENSURE CONNECTION ESTABLISHMENT
+            rfidreader.RfidHandler += Raise.EventWith(new RfidEventArgs(OldId));
 
-            station.State = StationControl.LadeskabState.Locked;
-            // ENSURE CONNECTION ESTABLISHMENT SOMEHOW
             rfidreader.RfidHandler += Raise.EventWith(new RfidEventArgs(id));
 
             // assert if old_id should match or not
-            Assert.AreEqual(station.GetOldId(), id);
+            Assert.AreEqual(station._oldId, id);
             Assert.AreEqual(StationControl.LadeskabState.Available, station.State);
-            Assert.AreEqual(Door.DoorState.Closed, station._door.GetDoorState());
         }
         [TestCase(5,79)]
         [TestCase(58432,28923)]
         public void TestRfidLockedIdMismatch(int OldId, int id)
         {
             // set old_id
-            station.SetOldId(OldId);
             station.State = StationControl.LadeskabState.Available;
             // ENSURE CONNECTION ESTABLISHMENT SOMEHOW
-            Door.DoorState old_door_state = station._door.GetDoorState();
+            chargeControl.connection_establishment().Returns(true); // ENSURE CONNECTION ESTABLISHMENT
+            rfidreader.RfidHandler += Raise.EventWith(new RfidEventArgs(OldId));
+            
             rfidreader.RfidHandler += Raise.EventWith(new RfidEventArgs(id));
-            Assert.AreNotEqual(id, station.GetOldId());
+            Assert.AreNotEqual(id, station._oldId);
             Assert.AreEqual(StationControl.LadeskabState.Locked, station.State);
-            // assert door is unchanged somehow??
-            Assert.AreEqual(old_door_state, station._door.GetDoorState());
-
         }
     }
 }

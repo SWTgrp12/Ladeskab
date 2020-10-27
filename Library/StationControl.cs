@@ -23,25 +23,24 @@ namespace Ladeskab
         };
 
         // Her mangler flere member variable
-        public LadeskabState State;
+        public LadeskabState State = LadeskabState.Available;
 
       //  private IUsbCharger _charger;
         private IRFIDReader _rfidReader;
         private IChargeControl _chargeControl;
         public IDoor _door;
-        private int _oldId;
+        public int _oldId { get; private set; }
         private IDisplay _display;
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
-        public void SetOldId(int id)
-        {
-            _oldId = id;
-        }
-
-        public int GetOldId()
-        {
-            return _oldId;
-        }
+        //public void SetOldId(int id)
+        //{
+        //    _oldId = id;
+        //}
+        //public int GetOldId()
+        //{
+        //    return _oldId;
+        //}
         
         // Normal constructor
         //public StationControl()
@@ -77,14 +76,24 @@ namespace Ladeskab
             _rfidReader.RfidHandler += new EventHandler<RfidEventArgs>(RfidDetected);
             _door.OpenHandler += new EventHandler(DoorOpened);
             _door.CloseHandler += new EventHandler(DoorClosed);
+            // ensuring states are correct at the beginning
+            _door.Unlock();
         }
         // event handlers for Door. Displays the appropriate message when the door is opened and closed
         private void DoorOpened(object sender, EventArgs e)
         {
+            if (State == LadeskabState.Available)
+            {
+                State = LadeskabState.DoorOpen;
+            }
             _display.PrintStationMsg("Tilslut telefon");
         }
         private void DoorClosed(object sender, EventArgs e)
         {
+            if (State == LadeskabState.DoorOpen)
+            {
+                State = LadeskabState.Available;
+            }
             _display.PrintStationMsg("Indlæs RFID");
         }
 
@@ -123,6 +132,8 @@ namespace Ladeskab
                     // Check for correct ID
                     if (e.id_ == _oldId)
                     {
+                        Console.WriteLine("received id: {0}", e.id_);
+                        Console.WriteLine("old id: {0}", _oldId);
                         _chargeControl.charge_control_stop();
                         _door.Unlock();
                         using (var writer = File.AppendText(logFile))
