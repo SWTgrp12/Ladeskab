@@ -3,11 +3,12 @@ using NUnit.Framework;
 using UsbSimulator;
 using Display;
 
-namespace Ladeskab.Test
+namespace LadeskabTest
 {
     public class DisplayTestClass
     {
         private IDisplay _uut;
+        private string TestMsg;
 
         [SetUp]
         public void Setup()
@@ -18,8 +19,9 @@ namespace Ladeskab.Test
         [Test]
         public void PrintStationMsg()
         {
-            _uut.PrintStationMsg("Test");
-            Assert.That(_uut.DisplayAreaStation, Is.EqualTo());
+            TestMsg = "Test";
+            _uut.PrintStationMsg(TestMsg);
+            Assert.That(_uut.DisplayAreaStation, Is.EqualTo(TestMsg));
 
 
         }
