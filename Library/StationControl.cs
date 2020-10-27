@@ -26,9 +26,8 @@ namespace Ladeskab
         public LadeskabState State;
 
       //  private IUsbCharger _charger;
-        private RFIDReader _rfidReader;
-        private ChargeControl _chargeControl;
-        private UsbChargerSimulator _usbCharger;
+        private IRFIDReader _rfidReader;
+        private IChargeControl _chargeControl;
         public IDoor _door;
         private int _oldId;
         private IDisplay _display;
@@ -45,45 +44,37 @@ namespace Ladeskab
         }
         
         // Normal constructor
-        public StationControl()
-        {
-            // in the constructor we need to create an instance of the class triggering the event.
-            _rfidReader =  new RFIDReader();
-            // and associate its event handler with the function that handles it.
-            _rfidReader.RfidHandler += new EventHandler<RfidEventArgs>(RfidDetected);
+        //public StationControl()
+        //{
+        //    // in the constructor we need to create an instance of the class triggering the event.
+        //    _rfidReader =  new RFIDReader();
+        //    // and associate its event handler with the function that handles it.
+        //    _rfidReader.RfidHandler += new EventHandler<RfidEventArgs>(RfidDetected);
 
-            // usbsimulator
-            _usbCharger = new UsbChargerSimulator();
 
-            //Display 
-            _display = new DisplayControl();
-            // Charge Control
-            _chargeControl = new ChargeControl(_usbCharger, _display);
+        //    //Display 
+        //    _display = new DisplayControl();
+        //    // Charge Control
+        //    _chargeControl = new ChargeControl(_usbCharger, _display);
 
-            // Door and its events
-            _door =  new Door();
-            _door.OpenHandler += new EventHandler(DoorOpened);
-            _door.CloseHandler += new EventHandler(DoorClosed);
+        //    // Door and its events
+        //    _door =  new Door();
+        //    _door.OpenHandler += new EventHandler(DoorOpened);
+        //    _door.CloseHandler += new EventHandler(DoorClosed);
 
-        }
+        //}
         // Test constructor, which we can easily give substitutes
-        public StationControl(RFIDReader rfidReader, UsbChargerSimulator usb, IDoor door)
+        public StationControl(IRFIDReader rfidReader, IDoor door, IDisplay display, IChargeControl chargeControl) 
         {
-            // in the constructor we need to create an instance of the class triggering the event.
+
+            // moduler
             _rfidReader = rfidReader;
+            _display = display;
+            _chargeControl = chargeControl;
+            _door = door;
+            // in the constructor we need to create an instance of the class triggering the event.
             // and associate its event handler with the function that handles it.
             _rfidReader.RfidHandler += new EventHandler<RfidEventArgs>(RfidDetected);
-
-            // usbsimulator
-            _usbCharger = usb;
-
-            //Display 
-            _display = new DisplayControl();
-            // Charge Control
-            _chargeControl = new ChargeControl(_usbCharger, _display);
-
-            // Door and its events
-            _door = door;
             _door.OpenHandler += new EventHandler(DoorOpened);
             _door.CloseHandler += new EventHandler(DoorClosed);
         }
@@ -101,7 +92,6 @@ namespace Ladeskab
         public void RfidDetected(object sender, RfidEventArgs e)
 
         {
-            Console.WriteLine("RfidDetected called!");
             switch (State)
             {
                 case LadeskabState.Available:

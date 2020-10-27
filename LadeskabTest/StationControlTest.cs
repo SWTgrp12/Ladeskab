@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection.Metadata;
 using System.Text;
+using Display;
 using Ladeskab;
 using Library;
 using UsbSimulator;
@@ -12,14 +13,22 @@ namespace LadeskabTest
 {
     class StationControlTest
     {
-        private RFIDReader rfidreader = Substitute.For<RFIDReader>();
-        private UsbChargerSimulator usb = Substitute.For<UsbChargerSimulator>();
-        private IDoor door = Substitute.For<IDoor>();
+        private IRFIDReader rfidreader;
+        private IUsbCharger usb;
+        private IDoor door;
         private StationControl station;
-        [SetUp]
+        private IDisplay disp;
+        private IChargeControl chargeControl;
+
+    [SetUp]
         public void Setup()
         {
-            station = new StationControl(rfidreader, usb, door);
+            rfidreader = Substitute.For<IRFIDReader>();
+            door = Substitute.For<IDoor>();
+            usb = Substitute.For<IUsbCharger>();
+            disp = Substitute.For<IDisplay>();
+            chargeControl = Substitute.For<IChargeControl>();
+            station = new StationControl(rfidreader, door, disp, chargeControl);
         }
 
         [TestCase(1)]
@@ -27,10 +36,10 @@ namespace LadeskabTest
         public void TestRfidAvailable(int id)
         {
             station.State = StationControl.LadeskabState.Available;
-            // ENSURE CONNECTION ESTABLISHMENT SOMEHOW
+            chargeControl.connection_establishment().Returns(true); // ENSURE CONNECTION ESTABLISHMENT
             rfidreader.RfidHandler += Raise.EventWith(new RfidEventArgs(id));
 
-            Assert.AreEqual(station.GetOldId(), id);
+            Assert.AreEqual(id, station.GetOldId());
             Assert.AreEqual(StationControl.LadeskabState.Locked, station.State);
         }
         [TestCase(1)]
@@ -51,7 +60,7 @@ namespace LadeskabTest
         public void TestRfidLocked(int OldId, int id)
         {
             // set old_id
-            station.SetOldId(OldId); 
+            station.SetOldId(OldId);
 
             station.State = StationControl.LadeskabState.Locked;
             // ENSURE CONNECTION ESTABLISHMENT SOMEHOW
