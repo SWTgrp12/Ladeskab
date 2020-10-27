@@ -4,7 +4,7 @@ using NUnit.Framework;
 using UsbSimulator;
 using NSubstitute;
 
-namespace Ladeskab.Test
+namespace LadeskabTest
 {
     public class Tests
     {

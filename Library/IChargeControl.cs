@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Library
 {
-    interface IChargeControl
+    public interface IChargeControl
     {
         public bool connection_establishment();
         public Charge_Status handle_charge();

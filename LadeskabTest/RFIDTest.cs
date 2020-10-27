@@ -4,6 +4,7 @@ using System.Text;
 using Library;
 using NUnit.Framework;
 using NSubstitute;
+
 namespace LadeskabTest
 {
     class RFIDTest
