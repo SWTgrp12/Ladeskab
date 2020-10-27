@@ -15,7 +15,7 @@ namespace Ladeskab
     public class StationControl
     {
         // Enum med tilstande ("states") svarende til tilstandsdiagrammet for klassen
-        private enum LadeskabState
+        public enum LadeskabState
         {
             Available,
             Locked,
@@ -23,16 +23,27 @@ namespace Ladeskab
         };
 
         // Her mangler flere member variable
-        private LadeskabState _state;
+        public LadeskabState State;
+
       //  private IUsbCharger _charger;
         private RFIDReader _rfidReader;
         private ChargeControl _chargeControl;
         private UsbChargerSimulator _usbCharger;
-        private IDoor _door;
+        public IDoor _door;
         private int _oldId;
         private IDisplay _display;
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
+        public void SetOldId(int id)
+        {
+            _oldId = id;
+        }
+
+        public int GetOldId()
+        {
+            return _oldId;
+        }
+        
         // Normal constructor
         public StationControl()
         {
@@ -47,7 +58,7 @@ namespace Ladeskab
             //Display 
             _display = new DisplayControl();
             // Charge Control
-            _chargeControl = new ChargeControl(_usbCharger, ref _display);
+            _chargeControl = new ChargeControl(_usbCharger, _display);
 
             // Door and its events
             _door =  new Door();
@@ -56,7 +67,7 @@ namespace Ladeskab
 
         }
         // Test constructor, which we can easily give substitutes
-        public StationControl(RFIDReader rfidReader, UsbChargerSimulator usb, Door door)
+        public StationControl(RFIDReader rfidReader, UsbChargerSimulator usb, IDoor door)
         {
             // in the constructor we need to create an instance of the class triggering the event.
             _rfidReader = rfidReader;
@@ -69,7 +80,7 @@ namespace Ladeskab
             //Display 
             _display = new DisplayControl();
             // Charge Control
-            _chargeControl = new ChargeControl(_usbCharger, ref _display);
+            _chargeControl = new ChargeControl(_usbCharger, _display);
 
             // Door and its events
             _door = door;
@@ -87,11 +98,11 @@ namespace Ladeskab
         }
 
         // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
-        // object sender burde i teorien betyde at den her 
-        private void RfidDetected(object sender, RfidEventArgs e)
+        public void RfidDetected(object sender, RfidEventArgs e)
 
         {
-            switch (_state)
+            Console.WriteLine("RfidDetected called!");
+            switch (State)
             {
                 case LadeskabState.Available:
                     // Check for ladeforbindelse
@@ -105,7 +116,7 @@ namespace Ladeskab
                             writer.WriteLine(DateTime.Now + ": Skab låst med RFID: {0}", e.id_);
                         }
                         _display.PrintStationMsg("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");
-                        _state = LadeskabState.Locked;
+                        State = LadeskabState.Locked;
                     }
                     else
                     {
@@ -130,7 +141,7 @@ namespace Ladeskab
                         }
 
                         _display.PrintStationMsg("Tag din telefon ud af skabet og luk døren");
-                        _state = LadeskabState.Available;
+                        State = LadeskabState.Available;
                     }
                     else
                     {
