@@ -9,16 +9,10 @@ namespace Library
         // Variables
         public string DisplayAreaStation { get; private set; } = "";
         public string DisplayAreaCharger { get; private set; } = "";
-        private int _constructerCounter;
-        // Objects
-        // private IChargeControl _chargeControl;
-        // private IStationControl _stationControl;
 
 
         public DisplayControl()
         {
-            _constructerCounter += 1;
-            Console.WriteLine("Display Constructor times called: " + _constructerCounter);
         }
 
         public void PrintStationMsg(string Msg)

@@ -1,22 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Display;
+using Library;
+using Ladeskab;
+using UsbSimulator;
 
-class Program 
+namespace LadeskabProject
 {
+    class Program
+    {
         static void Main(string[] args)
         {
-				// Assemble your system here from all the classes
-                
+            // Assemble your system here from all the classes
+            Door door = new Door();
+            DisplayControl display = new DisplayControl();
+            UsbChargerSimulator usbCharger = new UsbChargerSimulator();
+            RFIDReader rfidReader = new RFIDReader();
+
+            ChargeControl chargeControl = new ChargeControl(usbCharger, display);
+            StationControl stationControl = new StationControl(rfidReader, door, display, chargeControl);
+
+
+
             bool finish = false;
             do
             {
                 string input;
-                System.Console.WriteLine("Indtast E, O, C, R: ");
+                System.Console.WriteLine("Indtast (E)xit, (O)pendoor, (C)losedoor, (R)fid: ");
                 input = Console.ReadLine();
                 if (string.IsNullOrEmpty(input)) continue;
 
-                /*
+                
                 switch (input[0])
                 {
                     case 'E':
@@ -24,11 +39,11 @@ class Program
                         break;
 
                     case 'O':
-                        door.OnDoorOpen();
+                        door.Open();
                         break;
 
                     case 'C':
-                        door.OnDoorClose();
+                        door.Close();
                         break;
 
                     case 'R':
@@ -36,15 +51,16 @@ class Program
                         string idString = System.Console.ReadLine();
 
                         int id = Convert.ToInt32(idString);
-                        rfidReader.OnRfidRead(id);
+                        rfidReader.RfidEvent(id);
                         break;
 
                     default:
                         break;
                 }
-                */
-            } while (!finish);
                 
+            } while (!finish);
+
         }
-    
+
+    }
 }
