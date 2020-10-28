@@ -7,7 +7,7 @@ namespace Library
     public interface IChargeControl
     {
         public bool connection_establishment();
-        public Charge_Status handle_charge();
+        public void handle_charge();
         public void charge_control_start();
         public void charge_control_stop();
     }

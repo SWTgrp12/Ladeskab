@@ -1,6 +1,8 @@
 using Library;
 using NUnit.Framework;
 using NSubstitute;
+using NSubstitute.Core;
+using NSubstitute.ReceivedExtensions;
 
 namespace LadeskabTest
 {
@@ -9,7 +11,7 @@ namespace LadeskabTest
         private IUsbCharger _usbCharger;
         private IDisplay _display;
         private ChargeControl _uut;
-        Charge_Status stat;
+        //Charge_Status stat;
 
         [SetUp]
         public void Setup()
@@ -38,22 +40,36 @@ namespace LadeskabTest
             Assert.That(_uut.current_stat.Equals(current_t));
         }
 
-        [TestCase(0, Charge_Status.NOT_CONNECTED)]
-        [TestCase(5.0,Charge_Status.CHARGING_FINISHED)]
-        [TestCase(3.5, Charge_Status.CHARGING_FINISHED)]
-        [TestCase(0.1, Charge_Status.CHARGING_FINISHED)]
-        [TestCase(5.1, Charge_Status.CHARGING_IN_PROGRESS)]
-        [TestCase(350, Charge_Status.CHARGING_IN_PROGRESS)]
-        [TestCase(210.55, Charge_Status.CHARGING_IN_PROGRESS)]
-        [TestCase(500.0, Charge_Status.CHARGING_IN_PROGRESS)]
-        [TestCase(500.1, Charge_Status.CHARGING_FAILURE)]
-        [TestCase(752.3, Charge_Status.CHARGING_FAILURE)]
-        [TestCase(1000.0, Charge_Status.CHARGING_FAILURE)]
-        public void handle_charge_test(double current_t, Charge_Status CS_t)
+        // using mock to test if call has been issued with correct message dependant on current
+        [TestCase(0, "Charger is not connected")]
+        [TestCase(5.0, "Charging has finished")]
+        [TestCase(3.5, "Charging has finished")]
+        [TestCase(0.1, "Charging has finished")]
+        [TestCase(5.1, "Charging is currently in progress")]
+        [TestCase(350, "Charging is currently in progress")]
+        [TestCase(210.55, "Charging is currently in progress")]
+        [TestCase(500.0, "Charging is currently in progress")]
+        [TestCase(500.1, "Charging failure! Please Disconnect your Device")]
+        [TestCase(752.3, "Charging failure! Please Disconnect your Device")]
+        [TestCase(1000.0, "Charging failure! Please Disconnect your Device")]
+        public void handle_charge_test(double current_t, string msg)
         {
-            _uut.current_stat = current_t;
-            Assert.That(_uut.handle_charge(), Is.EqualTo(CS_t));
+            _usbCharger.CurrentValueEvent += Raise.EventWith(new CurrentEventArgs { Current = current_t });
+            _display.Received().PrintChargerMsg(msg);
         }
 
+        [Test]
+        public void charge_control_start_test()
+        {
+            _uut.charge_control_start();
+            _usbCharger.Received().StartCharge();
+        }
+
+        [Test]
+        public void charge_control_stop_test()
+        {
+            _uut.charge_control_stop();
+            _usbCharger.Received().StopCharge();
+        }
     }
 }
