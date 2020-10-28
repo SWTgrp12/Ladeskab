@@ -48,7 +48,13 @@ namespace LadeskabTest
             door.Open();
             door.Close();
             Assert.That(door.GetDoorState(), Is.EqualTo(Door.DoorState.Closed));
-            // check the event maybe?
+        }
+        [Test]
+        public void TestDoorCloseFail()
+        {
+            door.Lock();
+            door.Close();
+            Assert.That(door.GetDoorState(), Is.EqualTo(Door.DoorState.Locked));
         }
         [Test]
         public void TestDoorLock()
@@ -57,11 +63,25 @@ namespace LadeskabTest
             Assert.That(door.GetDoorState(), Is.EqualTo(Door.DoorState.Locked));
         }
         [Test]
+        public void TestDoorLockFail()
+        {
+            door.Open();
+            door.Lock();
+            Assert.That(door.GetDoorState(), Is.EqualTo(Door.DoorState.Open));
+        }
+        [Test]
         public void TestDoorUnlock()
         {
             door.Lock();
             door.Unlock();
             Assert.That(door.GetDoorState(), Is.EqualTo(Door.DoorState.Closed));
+        }
+        [Test]
+        public void TestDoorUnlockFail()
+        {
+            door.Open();
+            door.Unlock();
+            Assert.That(door.GetDoorState(), Is.EqualTo(Door.DoorState.Open));
         }
         [Test]
         public void TestDoorOpenEventRaised()
