@@ -31,36 +31,7 @@ namespace Library
         private IDisplay _display;
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
-        //public void SetOldId(int id)
-        //{
-        //    _oldId = id;
-        //}
-        //public int GetOldId()
-        //{
-        //    return _oldId;
-        //}
-        
-        // Normal constructor
-        //public StationControl()
-        //{
-        //    // in the constructor we need to create an instance of the class triggering the event.
-        //    _rfidReader =  new RFIDReader();
-        //    // and associate its event handler with the function that handles it.
-        //    _rfidReader.RfidHandler += new EventHandler<RfidEventArgs>(RfidDetected);
 
-
-        //    //Display 
-        //    _display = new DisplayControl();
-        //    // Charge Control
-        //    _chargeControl = new ChargeControl(_usbCharger, _display);
-
-        //    // Door and its events
-        //    _door =  new Door();
-        //    _door.OpenHandler += new EventHandler(DoorOpened);
-        //    _door.CloseHandler += new EventHandler(DoorClosed);
-
-        //}
-        // Test constructor, which we can easily give substitutes
         public StationControl(IRFIDReader rfidReader, IDoor door, IDisplay display, IChargeControl chargeControl) 
         {
 
