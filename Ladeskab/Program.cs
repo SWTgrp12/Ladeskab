@@ -17,7 +17,7 @@ namespace LadeskabProject
 
             ChargeControl chargeControl = new ChargeControl(usbCharger, display);
             StationControl stationControl = new StationControl(rfidReader, door, display, chargeControl);
-            bool connectedPhone = false;
+            bool connectedPhone = true;
             bool overcharge = false;
 
 
