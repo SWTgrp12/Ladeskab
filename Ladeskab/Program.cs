@@ -18,14 +18,14 @@ namespace LadeskabProject
             ChargeControl chargeControl = new ChargeControl(usbCharger, display);
             StationControl stationControl = new StationControl(rfidReader, door, display, chargeControl);
             bool connectedPhone = false;
-
+            bool overcharge = false;
 
 
             bool finish = false;
             do
             {
                 string input;
-                System.Console.WriteLine("Indtast (E)xit, (O)pendoor, (C)losedoor, (P)hone, (R)fid: ");
+                System.Console.WriteLine("Indtast (E)xit, (O)pendoor, (C)losedoor, (P)hone, (K)overload (R)fid: ");
                 input = Console.ReadLine();
                 if (string.IsNullOrEmpty(input)) continue;
 
@@ -61,17 +61,29 @@ namespace LadeskabProject
                         break;
                     case 'P':
                     case 'p':
-                        if (connectedPhone)
+                        if (connectedPhone == false)
                         {
-                            usbCharger.SimulateConnected(false);
-                            connectedPhone = false;
+                            usbCharger.SimulateConnected(true);
+                            connectedPhone = true;
 
                         }
-                        else usbCharger.SimulateConnected(true);
-                        connectedPhone = true;
+                        else usbCharger.SimulateConnected(false);
+                        connectedPhone = false;
 
                         break;
 
+                    case 'k':
+                    case 'K':
+                        if (overcharge == false)
+                        {
+                            usbCharger.SimulateOverload(true);
+                            overcharge = true;
+
+                        }
+                        else usbCharger.SimulateConnected(false);
+                        overcharge = false;
+
+                        break;
                     default:
                         break;
                 }
