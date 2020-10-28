@@ -47,6 +47,15 @@ namespace LadeskabTest
         [Test]
         public void TestDoorClosed()
         {
+            door.OpenHandler += Raise.Event();
+            door.CloseHandler += Raise.Event();
+            Assert.AreEqual(StationControl.LadeskabState.Available, station.State);
+
+        }
+        [Test]
+        public void TestDoorClosedFail()
+        {
+            // Door is allready closed
             door.CloseHandler += Raise.Event();
             Assert.AreEqual(StationControl.LadeskabState.Available, station.State);
 
