@@ -85,6 +85,17 @@ namespace LadeskabTest
         // TODO: Needs specific test cases
         [TestCase(1,1)]
         [TestCase(1000,1000)]
+        public void TestRfidOpenNoConnection(int id)
+        {
+            station.State = StationControl.LadeskabState.DoorOpen;
+            chargeControl.connection_establishment().Returns(false);
+            rfidreader.RfidHandler += Raise.EventWith(new RfidEventArgs(id));
+
+            Assert.AreEqual(StationControl.LadeskabState.DoorOpen, station.State);
+        }
+        // TODO: Needs specific test cases
+        [TestCase(1, 1)]
+        [TestCase(1000, 1000)]
         public void TestRfidLocked(int OldId, int id)
         {
             // set old_id

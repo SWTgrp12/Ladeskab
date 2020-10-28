@@ -24,7 +24,8 @@ namespace LadeskabProject
             do
             {
                 string input;
-                System.Console.WriteLine("Indtast (E)xit, (O)pendoor, (C)losedoor, (R)fid: ");
+                bool connectedPhone = false;
+                System.Console.WriteLine("Indtast (E)xit, (O)pendoor, (C)losedoor, (P)hone, (R)fid: ");
                 input = Console.ReadLine();
                 if (string.IsNullOrEmpty(input)) continue;
 
@@ -57,6 +58,18 @@ namespace LadeskabProject
                             idString = System.Console.ReadLine();
                         }
                         rfidReader.RfidEvent(id);
+                        break;
+                    case 'P':
+                    case 'p':
+                        if (connectedPhone)
+                        {
+                            usbCharger.SimulateConnected(false);
+                            connectedPhone = false;
+
+                        }
+                        else usbCharger.SimulateConnected(true);
+                        connectedPhone = true;
+
                         break;
 
                     default:
