@@ -17,6 +17,7 @@ namespace LadeskabProject
 
             ChargeControl chargeControl = new ChargeControl(usbCharger, display);
             StationControl stationControl = new StationControl(rfidReader, door, display, chargeControl);
+            bool connectedPhone = false;
 
 
 
@@ -24,7 +25,6 @@ namespace LadeskabProject
             do
             {
                 string input;
-                bool connectedPhone = false;
                 System.Console.WriteLine("Indtast (E)xit, (O)pendoor, (C)losedoor, (P)hone, (R)fid: ");
                 input = Console.ReadLine();
                 if (string.IsNullOrEmpty(input)) continue;
