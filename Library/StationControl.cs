@@ -13,7 +13,7 @@ namespace Library
     public class StationControl
     {
         // Enum med tilstande ("states") svarende til tilstandsdiagrammet for klassen
-        public enum LadeskabState
+        private enum LadeskabState
         {
             Available,
             Locked,
@@ -21,14 +21,14 @@ namespace Library
         };
 
         // Her mangler flere member variable
-        public LadeskabState State = LadeskabState.Available;
+        private LadeskabState State = LadeskabState.Available;
 
       //  private IUsbCharger _charger;
         private IRFIDReader _rfidReader;
         private IChargeControl _chargeControl;
-        public IDoor _door;
-        public int _oldId { get; private set; }
+        private IDoor _door;
         private IDisplay _display;
+        private int _oldId;  //{ get; private set; }
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
 
@@ -54,16 +54,18 @@ namespace Library
             if (State == LadeskabState.Available)
             {
                 State = LadeskabState.DoorOpen;
+                _display.PrintStationMsg("Tilslut telefon");
             }
-            _display.PrintStationMsg("Tilslut telefon");
+            
         }
         private void DoorClosed(object sender, EventArgs e)
         {
             if (State == LadeskabState.DoorOpen)
             {
                 State = LadeskabState.Available;
+                _display.PrintStationMsg("Indlæs RFID");
             }
-            _display.PrintStationMsg("Indlæs RFID");
+            
         }
 
         // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
@@ -83,8 +85,9 @@ namespace Library
                         {
                             writer.WriteLine(DateTime.Now + ": Skab låst med RFID: {0}", e.id_);
                         }
-                        _display.PrintStationMsg("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");
                         State = LadeskabState.Locked;
+                        _display.PrintStationMsg("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");
+                        
                     }
                     else
                     {
@@ -94,7 +97,7 @@ namespace Library
                     break;
 
                 case LadeskabState.DoorOpen:
-                    // Ignore
+                    _display.PrintStationMsg("Door is Open");
                     break;
 
                 case LadeskabState.Locked:
