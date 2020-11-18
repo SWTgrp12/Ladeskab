@@ -29,6 +29,7 @@ namespace LadeskabTest
         public void establish_note() //check that notefile is created
         {
             string _file = _testadress + _testfileName;
+            Assert.IsFalse(File.Exists(_file));
             _uut.WriteEntry(_testMsg);
             Assert.IsTrue(File.Exists(_file)); 
         }

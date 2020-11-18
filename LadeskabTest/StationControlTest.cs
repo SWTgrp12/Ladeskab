@@ -18,11 +18,11 @@ namespace LadeskabTest
         private StationControl _uut;
 
         // Strings for display 
+        // Not a great way to check string parameter's, but better than in the test's themself
         string _TestMsg = "Msg";
         string _DoorOpenMsg = "Tilslut telefon";
         string _DoorOpenMsgRfid = "Door is Open";
         string _DoorClosedMsg = "Indlæs RFID";
-        //string _RfidMsg = "Indlæs RFID";
         string _NoConnectionMsg = "Din telefon er ikke ordentlig tilsluttet. Prøv igen.";
         string _WrongId = "Forkert RFID tag";
         string _NowChargingMsg = "Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.";
@@ -98,7 +98,7 @@ namespace LadeskabTest
         public void Rfid_OpenState(int id)
         {
             _door.OpenHandler += Raise.Event();
-            _disp.Received().PrintStationMsg("Tilslut telefon");
+            _disp.Received().PrintStationMsg(_DoorOpenMsg);
             // State is now DoorOpen
             _rfidreader.RfidHandler += Raise.EventWith(new RfidEventArgs(id));
             _door.DidNotReceive().Lock();
@@ -118,7 +118,7 @@ namespace LadeskabTest
             // State now Locked. open it again with the same ID
             _rfidreader.RfidHandler += Raise.EventWith(new RfidEventArgs(id));
             _door.Received().Unlock();
-            _disp.PrintStationMsg("Tag din telefon ud af skabet og luk døren");
+            _disp.PrintStationMsg(_TakePhoneMsg);
         }
 
         [TestCase(1, 1)]
@@ -143,8 +143,7 @@ namespace LadeskabTest
             _chargeControl.Received().charge_control_start();
             // State now Locked. open it again with the wrong id
             _rfidreader.RfidHandler += Raise.EventWith(new RfidEventArgs(id));
-            // But Id's that are not similar, should n't be able to unlock.
-            //_door.DidNotReceive().Unlock();
+            // But Id's that are not similar, isn't able to unlock.
             _disp.PrintStationMsg(_WrongId);
         }
     }
