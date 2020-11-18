@@ -27,8 +27,6 @@ namespace LadeskabTest
         string _WrongId = "Forkert RFID tag";
         string _NowChargingMsg = "Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.";
         string _TakePhoneMsg = "Tag din telefon ud af skabet og luk døren";
-        // Vi Checker hvilken State vi er i ved
-        // at checke beskederne der bliver sendt til Display
 
         [SetUp]
         public void Setup()
