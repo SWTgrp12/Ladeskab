@@ -8,8 +8,7 @@ using NSubstitute;
 
 namespace LadeskabTest
 {
-    class StationControlTest
-
+    public class StationControlTest
     {
         private IRFIDReader _rfidreader;
         private IDoor _door;
@@ -24,7 +23,8 @@ namespace LadeskabTest
         string _DoorOpenMsgRfid = "Door is Open";
         string _DoorClosedMsg = "Indlæs RFID";
         //string _RfidMsg = "Indlæs RFID";
-        string _NoConnectionMsg = "Din telefon er ikke ordentlig tilsluttet.Prøv igen.";
+        string _NoConnectionMsg = "Din telefon er ikke ordentlig tilsluttet. Prøv igen.";
+        string _WrongId = "Forkert RFID tag";
         string _NowChargingMsg = "Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.";
         string _TakePhoneMsg = "Tag din telefon ud af skabet og luk døren";
         // Vi Checker hvilken State vi er i ved
@@ -48,6 +48,7 @@ namespace LadeskabTest
             _door.OpenHandler += Raise.Event();
             _disp.Received().PrintStationMsg(_DoorOpenMsg);
         }
+
         [Test]
         public void Door_Closed()
         {
@@ -70,17 +71,22 @@ namespace LadeskabTest
         [TestCase(9)]
         public void Rfid_AvailableState(int id)
         {
-            _chargeControl.connection_establishment().Returns(true); // Ensure phone connection get's returned True 
-            _rfidreader.RfidHandler += Raise.EventWith(new RfidEventArgs(id));
+            RfidEventArgs RfidArgs = new RfidEventArgs(id);
+            _chargeControl.connection_establishment().Returns(true);
+            _rfidreader.RfidHandler += Raise.EventWith(this ,RfidArgs);
+            //_rfidreader.RfidHandler += (sender, args) => receivedId = args.id_;
 
             _door.Received().Lock();
             _chargeControl.Received().charge_control_start();
             _disp.Received().PrintStationMsg(_NowChargingMsg);
         }
+        [TestCase(1)]
+        [TestCase(9)]
         public void Rfid_AvailableState_NoConnection(int id)
         {
+            RfidEventArgs RfidArgs = new RfidEventArgs(id);
             _chargeControl.connection_establishment().Returns(false);  
-            _rfidreader.RfidHandler += Raise.EventWith(new RfidEventArgs(id));
+            _rfidreader.RfidHandler += Raise.EventWith(RfidArgs);
 
             _door.DidNotReceive().Lock();
             _chargeControl.DidNotReceive().charge_control_start();
@@ -111,55 +117,35 @@ namespace LadeskabTest
             _chargeControl.Received().charge_control_start();
             // State now Locked. open it again with the same ID
             _rfidreader.RfidHandler += Raise.EventWith(new RfidEventArgs(id));
-            //Assert.AreEqual(id, station._oldId);
             _door.Received().Unlock();
             _disp.PrintStationMsg("Tag din telefon ud af skabet og luk døren");
         }
-        // TODO: Needs specific test cases
+
         [TestCase(1, 1)]
         [TestCase(1000, 1000)]
-        public void TestRfidOpenNoConnection(int OldId,int id)
+        public void Rfid_OpenNoConnection(int OldId, int id)
         {
-            // set old_id
-            station.State = StationControl.LadeskabState.Available;
-            chargeControl.connection_establishment().Returns(false); 
-            rfidreader.RfidHandler += Raise.EventWith(new RfidEventArgs(OldId));
-
-            rfidreader.RfidHandler += Raise.EventWith(new RfidEventArgs(id));
-
-            // assert if old_id should match or not
-            Assert.AreNotEqual(station._oldId, id);
-            Assert.AreEqual(StationControl.LadeskabState.Available, station.State);
+            RfidEventArgs RfidArgs = new RfidEventArgs(OldId);
+            _chargeControl.connection_establishment().Returns(false); 
+            _rfidreader.RfidHandler += Raise.EventWith(RfidArgs);
+            _door.DidNotReceive().Lock();
         }
-        // TODO: Needs specific test cases
-        [TestCase(1, 1)]
-        [TestCase(1000, 1000)]
-        public void TestRfidLocked(int OldId, int id)
-        {
-            // set old_id
-            station.State = StationControl.LadeskabState.Available;
-            chargeControl.connection_establishment().Returns(true); // ENSURE CONNECTION ESTABLISHMENT
-            rfidreader.RfidHandler += Raise.EventWith(new RfidEventArgs(OldId));
-
-            rfidreader.RfidHandler += Raise.EventWith(new RfidEventArgs(id));
-
-            // assert if old_id should match or not
-            Assert.AreEqual(station._oldId, id);
-            Assert.AreEqual(StationControl.LadeskabState.Available, station.State);
-        }
+ 
         [TestCase(5,79)]
         [TestCase(58432,28923)]
         public void TestRfidLockedIdMismatch(int OldId, int id)
         {
-            // set old_id
-            station.State = StationControl.LadeskabState.Available;
-            // ENSURE CONNECTION ESTABLISHMENT SOMEHOW
-            chargeControl.connection_establishment().Returns(true); // ENSURE CONNECTION ESTABLISHMENT
-            rfidreader.RfidHandler += Raise.EventWith(new RfidEventArgs(OldId));
-            
-            rfidreader.RfidHandler += Raise.EventWith(new RfidEventArgs(id));
-            Assert.AreNotEqual(id, station._oldId);
-            Assert.AreEqual(StationControl.LadeskabState.Locked, station.State);
+            Assert.AreNotEqual(OldId, id); //tested id's can't match
+            // Get Locked state with ID
+            _chargeControl.connection_establishment().Returns(true); // 
+            _rfidreader.RfidHandler += Raise.EventWith(new RfidEventArgs(OldId));
+            _door.Received().Lock();
+            _chargeControl.Received().charge_control_start();
+            // State now Locked. open it again with the wrong id
+            _rfidreader.RfidHandler += Raise.EventWith(new RfidEventArgs(id));
+            // But Id's that are not similar, should n't be able to unlock.
+            //_door.DidNotReceive().Unlock();
+            _disp.PrintStationMsg(_WrongId);
         }
     }
 }

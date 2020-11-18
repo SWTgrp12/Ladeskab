@@ -5,12 +5,11 @@ using System.Text;
 namespace Library
 {
 
-
-
     public class ChargeControl: IChargeControl
     {
         private readonly IUsbCharger _usbChargerSimulator;
         private IDisplay _display;
+        //public bool connected {get; private set; }
         public double current_stat { get; set;}
 
         public ChargeControl(IUsbCharger usbDevice, IDisplay display)
@@ -29,7 +28,10 @@ namespace Library
 
         public bool connection_establishment()
         {
-            return _usbChargerSimulator.Connected;
+            if (_usbChargerSimulator.Connected == true)
+                return true;
+            else 
+                return false;
         }
 
         public void handle_charge()

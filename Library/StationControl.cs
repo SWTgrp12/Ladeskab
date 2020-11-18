@@ -28,8 +28,8 @@ namespace Library
         private IChargeControl _chargeControl;
         private IDoor _door;
         private IDisplay _display;
+        private LogControl _log;
         private int _oldId;  //{ get; private set; }
-        private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
 
         public StationControl(IRFIDReader rfidReader, IDoor door, IDisplay display, IChargeControl chargeControl) 
@@ -40,6 +40,7 @@ namespace Library
             _display = display;
             _chargeControl = chargeControl;
             _door = door;
+            _log = new LogControl();
             // in the constructor we need to create an instance of the class triggering the event.
             // and associate its event handler with the function that handles it.
             _rfidReader.RfidHandler += new EventHandler<RfidEventArgs>(RfidDetected);
@@ -81,13 +82,10 @@ namespace Library
                         _door.Lock();
                         _chargeControl.charge_control_start();
                         _oldId = e.id_;
-                        using (var writer = File.AppendText(logFile))
-                        {
-                            writer.WriteLine(DateTime.Now + ": Skab låst med RFID: {0}", e.id_);
-                        }
+                        string logMsg = $"Skab låst med RFID: { e.id_}";
+                        _log.WriteEntry(logMsg);
                         State = LadeskabState.Locked;
                         _display.PrintStationMsg("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");
-                        
                     }
                     else
                     {
@@ -106,13 +104,11 @@ namespace Library
                     {
                         Console.WriteLine("received id: {0}", e.id_);
                         Console.WriteLine("old id: {0}", _oldId);
+                        string logMsg = $"Skab låst op med RFID: { e.id_}";
                         _chargeControl.charge_control_stop();
-                        _door.Unlock();
-                        using (var writer = File.AppendText(logFile))
-                        {
-                            writer.WriteLine(DateTime.Now + ": Skab låst op med RFID: {0}", e.id_);
-                        }
 
+                        _door.Unlock();
+                        _log.WriteEntry(logMsg);
                         _display.PrintStationMsg("Tag din telefon ud af skabet og luk døren");
                         State = LadeskabState.Available;
                     }

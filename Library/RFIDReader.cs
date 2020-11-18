@@ -16,12 +16,13 @@ namespace Library
             RfidHandler?.Invoke(this, eventboy);
         }
     }
-}
-public class RfidEventArgs : EventArgs
-{
-    public RfidEventArgs(int id)
+
+    public class RfidEventArgs : EventArgs
     {
-        id_ = id;
+        public RfidEventArgs(int id)
+        {
+            id_ = id;
+        }
+        public int id_ { get; set; }
     }
-    public int id_ { get; set; }
 }

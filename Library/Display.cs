@@ -13,6 +13,7 @@ namespace Library
 
         public DisplayControl()
         {
+
         }
 
         public void PrintStationMsg(string Msg)

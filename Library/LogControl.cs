@@ -1,22 +1,33 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Library
 {
-    class LogControl
+    public class LogControl
     {
 
-        string _fileName = "logfile.txt";
-        string _adress = "";
+        public string _adress { get; private set; } = "";
+        public string _fileName { get; private set; } = "logfile.txt";
 
-    }
-        public void write()
+        public LogControl()
         {
+
+        }
+        public LogControl(string adress, string filename)
+        {
+            _adress = adress;
+            _fileName = filename;
+        }
+
+        public void WriteEntry(string entry)
+        {
+            String logFile = _adress + _fileName; // Changeable at runtime
             using (var writer = File.AppendText(logFile))
             {
-                writer.WriteLine(DateTime.Now + ": Skab låst med RFID: {0}", e.id_);
-            }
+                writer.WriteLine(DateTime.Now + ": " + entry);
+            } // Should DateTime have it's own layer aswell for testing? or not because it is a standard function?
         }
-    
+    }
 }
